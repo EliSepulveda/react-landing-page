@@ -63,7 +63,7 @@ const Home = () => {
 			<NavBar navBarItems={navBarItems} />
 			<div className="container">
 				<Jumbotron />
-				<div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4"> {/* Responsive column settings */}
+				<div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 					{cardsItems.map((card, index) => (
 						<div className="col" key={index}>
 							<BootStrapCard 
