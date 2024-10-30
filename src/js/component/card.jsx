@@ -1,39 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
 
-const cardImageStyle = {
-    height: '325px',
-    width: '500px'
-}
-
-const BootStrapCard = (props) => {
+const TimerCard = (props) => {
     return (
-        <div className="card px-0 justify-content-center">
-			<img
-				className="card-img-top"
-				src={props.imageUrl}
-				alt="Card image"
-                styles={cardImageStyle}
-			/>
-			<div className="card-body d-flex flex-column align-items-center text-center">
-				<h5 className="card-title">{props.title}</h5>
-				<p className="card-text">{props.description}</p>
-			</div>
-			<div className="card-footer text-center">
-				<a href={props.buttonUrl} className="btn btn-primary">
-					{props.buttonLabel}
-				</a>
-			</div>
-		</div>
-    )
+        <div className="timerCard">
+            {props.isIcon && <FontAwesomeIcon icon={faClock} style={{color: "#ffffff",}} />}
+            {
+                !props.isIcon && props.numero
+            }
+        </div>
+    );
 };
 
-BootStrapCard.propTypes = {
-    imageUrl: PropTypes.string,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    buttonUrl: PropTypes.string,
-    buttonLabel: PropTypes.string
-}
+TimerCard.propTypes = {
+    isIcon: PropTypes.bool,
+    numero: PropTypes.number
+};
 
-export default BootStrapCard;
+export default TimerCard;

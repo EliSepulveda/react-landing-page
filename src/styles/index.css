@@ -11,6 +11,29 @@
 
 */
 
+.timer-container {
+    gap: 50px; 
+    background-color: black;
+}
+
+.timer-container img {
+    height: 85%;
+    width: 100%;
+  }
+
+.timerCard {
+    color: white;
+    background-color: rgb(42, 42, 42);
+    height: 175px;
+    width: 150px;
+    text-align: center;
+    font-size: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
 #brand-spacer {
     width: 100px;
 }
@@ -32,4 +55,4 @@ body {
 
 #app {
     flex: 1; 
-}
+} */
