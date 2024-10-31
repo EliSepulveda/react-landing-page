@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import TimerCard from "./card";
 
-function getSecondsString(seconds) {
+function ObtenerSegundosCadena(seconds) {
     let text = seconds.toString();
     if (text.length > 6) {
         return text
@@ -12,16 +12,16 @@ function getSecondsString(seconds) {
 }
 
 
-const SecondsTimer = (props) => {
-    const seconds = getSecondsString(props.seconds)
-    console.log("seconds: " + seconds)
+const TemporizadorDeSegundos = (props) => {
+    const segundos = ObtenerSegundosCadena(props.segundos)
+    console.log("seconds: " + segundos)
     return (
         <>
             <div className="container-fluid justify-content-center mx-auto d-flex flex-row align-items-center text-center timer-container">
                 <div className="tcard" key="icon">
                     <TimerCard isIcon={true} />
                 </div>
-                {seconds.split("").map((num, i) => (
+                {segundos.split("").map((num, i) => (
                     <div className="tcard" key={i + 1}>
                         <TimerCard isIcon={false} numero={num} />
                     </div>
@@ -31,8 +31,8 @@ const SecondsTimer = (props) => {
     );
 };
 
-SecondsTimer.propTypes = {
-    seconds: PropTypes.number
+TemporizadorDeSegundos.propTypes = {
+    segundos: PropTypes.number
 };
 
-export default SecondsTimer;
+export default TemporizadorDeSegundos;
