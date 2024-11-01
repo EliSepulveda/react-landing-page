@@ -1,82 +1,41 @@
-import React, { useState, useEffect } from "react";
-import TemporizadorDeSegundos from "./timer";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause, faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from "react";
+import Semaforo from "./trafficLight";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons"
+
+function colorAleatorio(){
+    let aleatorioColor = "#";
+    for(let i=0;i<6;i++){
+        aleatorioColor += Math.floor(Math.random()*16).toString(16);
+    }
+    return aleatorioColor;
+}
 
 const Home = () => {
-	const [timerSeconds, setCount] = useState(0);
-	const [estaPausa, setEstaPausa] = useState(false);
-	const [estaAlertado, setEstaAlertado] = useState(false);
-	const [alertaEnEntrada, setAlertaEnEntrada] = useState("100");
+	const [lights, establecerLuces] = useState(["red", "orange", "green"])
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			if (!estaPausa) {
-				setCount(timerSeconds => timerSeconds + 1);
-			}
-		}, 1000);
-		
-		const alertaEnNumero = Number(alertaEnEntrada);
-		if (timerSeconds > alertaEnNumero && !estaAlertado) {
-			setEstaAlertado(true);
-		} else if (timerSeconds < alertaEnNumero && estaAlertado) {
-			setEstaAlertado(false)
-		}
+	function agregarLuz() {
+		establecerLuces(lights.concat([colorAleatorio()]))
+	}
 
-		return () => clearInterval(interval);
-	}, [estaPausa, timerSeconds, alertaEnEntrada, estaAlertado]);
-
-	const manejarCambioEntrada = (event) => {
-		setAlertaEnEntrada(event.target.value);
-	};
-
-	const alternarPausa = () => {
-		setEstaPausa(!estaPausa);
-	};
-
-	const temporizadorDeReinicio = () => {
-		setCount(0);
-		setEstaAlertado(false); // Reset alert when the timer is reset
-	};
-
+	function quitarLuz() {
+		establecerLuces(lights.slice(0, -1));
+	}
+	
 	return (
-		<div className="container d-flex flex-column align-items-center py-4">
-			{estaAlertado && 
-				<div className="alert alert-danger" role="alert">
-					{'Alerta!! El temporizador ha alcanzado ' + alertaEnEntrada + ' segundos.'}
-				</div>
-			}
-			<TemporizadorDeSegundos segundos={timerSeconds} />
-			
-			<div className="row justify-content-center my-3">
-				<div className="col-auto">
-					<button type="button" className="btn btn-secondary mx-2" onClick={alternarPausa}>
-						{!estaPausa ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}
-					</button>
-					<button type="button" className="btn btn-secondary mx-2" onClick={temporizadorDeReinicio}>
-						<FontAwesomeIcon icon={faArrowsRotate} />
-					</button>
-				</div>
-			</div>
-			
-			<div className="row justify-content-center">
-				<div className="col-auto">
-					<div className="input-group">
-						<div className="input-group-prepend">
-							<span className="input-group-text">Alerta en</span>
-						</div>
-						<input
-							type="text"
-							className="form-control text-center"
-							aria-label="alerta en (segundos)"
-							onChange={manejarCambioEntrada}
-							value={alertaEnEntrada}
-						/>
-					</div>
-				</div>
-			</div>
+		<>
+		<div className="traffic-light-pole"/>
+		<Semaforo luces={lights}></Semaforo>
+		<div className="d-flex flex-column justify-content-center mt-1">
+			<button onClick={agregarLuz} className="mx-auto bg-primary mb-1" style={{ color: "white" }}>
+				<FontAwesomeIcon icon={faPlus} />
+			</button>
+			<button onClick={quitarLuz} className="mx-auto bg-primary" style={{ color: "white" }}>
+				<FontAwesomeIcon icon={faMinus} />
+			</button>
 		</div>
-	);
+		</>
+	)
 };
 
 export default Home;
