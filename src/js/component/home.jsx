@@ -5,23 +5,23 @@ import BootStrapCard from "./card";
 
 const navBarItems = [
 	(
-		<li class="nav-item">
-			<a class="nav-link" href="#">Home</a>
+		<li className="nav-item" key="1">
+			<a className="nav-link" href="#">Home</a>
 		</li>
 	),
 	(
-		<li class="nav-item">
-			<a class="nav-link" href="#">About</a>
+		<li className="nav-item" key="2">
+			<a className="nav-link" href="#">About</a>
 		</li>
 	),
 	(
-		<li class="nav-item">
-			<a class="nav-link" href="#">Services</a>
+		<li className="nav-item" key="3">
+			<a className="nav-link" href="#">Services</a>
 		</li>
 	),
 	(
-		<li class="nav-item">
-			<a class="nav-link" href="#">Contact</a>
+		<li className="nav-item" key="4">
+			<a className="nav-link" href="#">Contact</a>
 		</li>
 	)
 ]

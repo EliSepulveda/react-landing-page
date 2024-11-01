@@ -8,7 +8,7 @@ const brandSpacingStyles = {
 const NavBar = (props) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark mx-auto">
-        <div class="container" id="brand-spacer"></div>
+        <div className="container" id="brand-spacer"></div>
         <a className="navbar-brand ml-5" href="#">Start Bootstrap</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -18,7 +18,7 @@ const NavBar = (props) => {
             {props.navBarItems}
           </ul>
         </div>
-        <div class="container" id="nav-item-spacer"></div>
+        <div className="container" id="nav-item-spacer"></div>
       </nav>
     )
 };
