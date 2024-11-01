@@ -23,7 +23,7 @@ const TemporizadorDeSegundos = (props) => {
                 </div>
                 {segundos.split("").map((num, i) => (
                     <div className="tcard" key={i + 1}>
-                        <TimerCard isIcon={false} numero={num} />
+                        <TimerCard isIcon={false} numero={Number(num)} />
                     </div>
                 ))}
             </div>
